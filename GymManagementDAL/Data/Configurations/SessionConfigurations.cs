@@ -21,12 +21,17 @@ namespace GymManagementDAL.Data.Configurations
 
             builder.HasOne(x => x.SessionCategory)
                 .WithMany(x => x.Sessions)
-                .HasForeignKey(x => x.CategoryId);
+                .HasForeignKey(x => x.CategoryId)
+                   .OnDelete(DeleteBehavior.ClientCascade);
+
 
 
             builder.HasOne(x => x.SessionTrainer)
                 .WithMany(x => x.TrainerSessions)
-                .HasForeignKey(x => x.TrainerId);
+                .HasForeignKey(x => x.TrainerId)
+                .OnDelete(DeleteBehavior.ClientCascade);
+
+
         }
     }
 }

@@ -13,11 +13,18 @@ namespace GymManagementDAL.Repositories.Classes
     public class UnitOfWork : IUnitOfWork 
     {
         private readonly GymDBContext _dBContext;
+        //private readonly ISessionRepo _sessionRepo;
 
-        public UnitOfWork( GymDBContext dBContext ) {
+        public UnitOfWork( GymDBContext dBContext , ISessionRepo sessionRepo ) {
             _dBContext = dBContext;
+            SessionRepo = sessionRepo;
         }
-        private readonly Dictionary<Type , object> _repositories = new Dictionary<Type , object>(); 
+        private readonly Dictionary<Type , object> _repositories = new Dictionary<Type , object>();
+
+        public ISessionRepo SessionRepo { get; }
+
+        ISessionRepo IUnitOfWork.SessionRepo => throw new NotImplementedException();
+
         public IGenerecRepo<TEntity> GetGenerecRepo<TEntity>() where TEntity : BaseEntity, new()
         {
             var TentityType = typeof(TEntity);

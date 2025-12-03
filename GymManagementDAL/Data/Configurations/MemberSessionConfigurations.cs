@@ -16,6 +16,9 @@ namespace GymManagementDAL.Data.Configurations
             builder.Property(X => X.CreatedAt)
                .HasColumnName("BookingDate")
                .HasDefaultValueSql("GETDATE()");
+               //.OnDelete(DeleteBehavior.ClientCascade);
+
+
 
             builder.HasKey(X => new { X.MemberId, X.SessionId });
 

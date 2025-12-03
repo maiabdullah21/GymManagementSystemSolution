@@ -12,13 +12,15 @@ namespace GymManagementDAL.Data.Configurations
 {
     internal class MemberConfigurations : GymUserConfigurations<Member>, IEntityTypeConfiguration<Member>
     {
-        public new void Configure(EntityTypeBuilder<Member> builder) { 
-          
+        public new void Configure(EntityTypeBuilder<Member> builder) {
+
             builder.Property(X => X.CreatedAt)
                 .HasColumnName("JoinDate")
                 .HasDefaultValueSql("GETDATE()");
+                //.OnDelete(DeleteBehavior.ClientCascade);
 
-                 base.Configure(builder);
+
+            base.Configure(builder);
         }
     }
 }

@@ -175,7 +175,7 @@ namespace GymManagementDAL.Data.Migrations
                         column: x => x.TrainerId,
                         principalTable: "trainers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
